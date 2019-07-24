@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Copyright © 2018 xuAdmin.</p>
+    <p>感谢 xuAdmin.</p>
   </div>
 </template>
 

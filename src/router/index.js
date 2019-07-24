@@ -27,6 +27,8 @@ const AddArticleEditor = () => import('@/views/article/addArticleEditor')
 const NavClassify = () => import('@/views/syssetting/navClassify')
 const pagePermissions = () => import('@/views/permissions/pagePermissions')
 const btnPermissions = () => import('@/views/permissions/btnPermissions')
+const applist = () => import('@/views/AppManage/apphome')
+const appupload = () => import('@/views/AppManage/appupload')
 
 Vue.use(Router)
 let routeNmae = en.routeNmae
@@ -87,6 +89,22 @@ let addRouter = [
         iconCls: 'el-icon-edit-outline', // 图标样式class
         name: routeNmae.publishArticleEditor,
         component: AddArticleEditor,
+        children: []
+      }
+    ]
+  },
+  {
+    path: '/',
+    iconCls: 'fa fa-cloud-upload', // app托管
+    name: routeNmae.appmanage,
+    component: Layout,
+    meta: {role: ['superAdmin']},
+    children: [
+      {
+        path: '/appupload',
+        iconCls: 'el-icon-upload2', // 图标样式class
+        name: routeNmae.appupload,
+        component: appupload,
         children: []
       }
     ]

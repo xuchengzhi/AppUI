@@ -8,6 +8,8 @@ import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 const cn = {
   routeNmae: {
     home: '主页',
+    appmanage: 'App托管',
+    appupload: 'App上传',
     article: '文章管理',
     publishArticle: '发表文章',
     publishArticleEditor: '发表文章-富文本',

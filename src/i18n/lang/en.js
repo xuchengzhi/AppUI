@@ -9,6 +9,8 @@ import enLocale from 'element-ui/lib/locale/lang/en'
 const en = {
   routeNmae: {
     home: 'home',
+    appmanage: 'appmanage',
+    appupload: 'appupload',
     article: 'article',
     publishArticle: 'publishArticle',
     publishArticleEditor: 'publishArticleEditor',
