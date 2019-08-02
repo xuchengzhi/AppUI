@@ -29,6 +29,7 @@ const pagePermissions = () => import('@/views/permissions/pagePermissions')
 const btnPermissions = () => import('@/views/permissions/btnPermissions')
 const applist = () => import('@/views/AppManage/apphome')
 const appupload = () => import('@/views/AppManage/appupload')
+const appdetail = () => import('@/views/AppManage/AppDetail')
 
 Vue.use(Router)
 let routeNmae = en.routeNmae

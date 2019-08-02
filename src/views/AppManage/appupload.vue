@@ -6,6 +6,7 @@
     <el-main>
       <div style="margin-left:10%;hight:100px;">
         <el-row :gutter="20">
+          
           <el-col :span="8" class="kjfs kjfs-bluee" style="background-color:#F8BA0B;margin-right:1%;height:500px;width:400px">
             <ul>
             <el-upload
@@ -20,16 +21,43 @@
               <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
             </el-upload>
             <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
-            <!-- <div style="margin-left:10%">
-            <el-button style="margin-left:10px;" size="small" type="success" @click="submitUpload">
-            上传到服务器
-            </el-button>
-            </div> -->
             </ul>
           </el-col>
-          <el-col :span="8" class="kjfs kjfs-bluee" style="background-color:#388CBE;height:500px;margin-right:1%;width:400px">
+          <div v-for="(item,index) in applist">
+            <router-link to="/appdetail/" class="kjfs kjfs-bluee" style="boder-top-left-radius：30px">{{item.url}}</router-link>
+            <el-col :span="8" class="card kjfs" style="height:500px;margin-right:1%;margin-bottom:1%;width:400px;background-color:#DCDEE2;">
+            <p class="title"><i class="fa fa-th-large el-icon-mobile-phone"></i>{{item.AppName}}</p>
+            <ul class="kjfs kjfs-bluee">
+            
+            
+            <li>
+            <div>
+              <img :src=" item.Img ">
+            </div>
+            <div style="margin-top:10%;margin-left:30%">
+            <li><span>版本：</span> {{item.BuildNum}}</li>
+            <li>
+            包名：{{item.Name}}
+            </li>
+            <li>
+              {{item.Describe}}
+            </li>
+            <li>
+            版本：{{item.Version}}
+            </li>
+
+            <li>
+            <i class="fa fa-th-large fa-tags"></i>
+            <span>{{item.Types}}</span>
+            </li>
+            </div>
+            
+            </li>
+            </ul>
+          </el-col>
+          </div>
+<!--           <el-col :span="8" class="kjfs kjfs-bluee" style="background-color:#388CBE;height:500px;margin-right:1%;width:400px">
             <ul>
-            测试
             </ul>
           </el-col>
           <el-col :span="8" style="background-color:#388CBE;margin-right:1%;height:500px;width:400px">
@@ -61,7 +89,7 @@
             <ul>
             测试
             </ul>
-          </el-col>
+          </el-col> -->
         </el-row>
       </div>
       <el-dialog
@@ -85,6 +113,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+import { requestApplist } from '../../api/api';
 export default {
   name: 'appupload',
   data() {
@@ -93,7 +123,11 @@ export default {
       dialogVisible: false,
       centerDialogVisible:false,
       disabled: false,
+      applist:[],
     };
+  },
+  mounted:function () {
+      this.apps();
   },
   methods: {
   handleRemove(file) {
@@ -102,6 +136,12 @@ export default {
   handlePictureCardPreview(file) {
     this.dialogImageUrl = file.url;
     this.dialogVisible = true;
+  },
+  apps() {
+    requestApplist().then(res => {
+          let { msg, code, data } = res;
+          this.applist = data.List;
+        });
   },
   handleDownload(file) {
     console.log(file);
@@ -114,16 +154,15 @@ export default {
     console.log('go back');
   },
   beforeAvatarUpload(file) {
-        const isJPG = file.type === 'image/jpeg';
-        const isLt2M = file.size / 1024 / 1024 < 2;
+      console.log("dddd"+file.type);
+      // application/x-itunes-ipa
+      const isApp = file.type === 'image/jpeg';
+      const isLt2M = file.size / 1024 / 1024 < 2;
 
-        if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 格式!');
-        }
-        if (!isLt2M) {
-          this.$message.error('上传头像图片大小不能超过 2MB!');
-        }
-        return isJPG && isLt2M;
+      if (!isApp) {
+        this.$message.error('只能上传apk和ipa文件');
+      }
+      return isApp;
     },
   }
 }
@@ -164,5 +203,15 @@ export default {
     color: #5e6d82;
     line-height: 1.5em;
   }
+  img{
+    width: auto;
+    height: auto;
+    margin-bottom:1%;
+    margin-top:10%;
+    margin-left:40%;
+    max-width: 50%;
+    max-height: 50%; 
+  }
+  
 </style>
 
