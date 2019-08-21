@@ -89,23 +89,26 @@ export default {
       } else {
         // 将 username 设置为 token 存储在 store，仅为测试效果，实际存储 token 以后台返回为准
         var par = {"username":this.loginForm.username,"password":md5(this.loginForm.password)}
-        requestLogin(par).then(
-          _data => {
-            let { msg, code, data } = _data;
-            if (code == 200) {
-              console.log();
-              sessionStorage.setItem('nickname', JSON.stringify(data.user.nickname));
-              that.$store.dispatch('setToken', data.token).then(() => {
-                that.$router.push({path: '/'})
-              })
-            } else {
-              that.$message({
-                showClose: true,
-                message: msg,
-                type: 'error'
-                })
-            }
+        that.$store.dispatch('setToken', "fdsfsdf").then(() => {
+                that.$router.push({path: '/autopay'})
         })
+        // requestLogin(par).then(
+        //   _data => {
+        //     let { msg, code, data } = _data;
+        //     if (code == 200) {
+        //       console.log();
+        //       sessionStorage.setItem('nickname', JSON.stringify(data.user.nickname));
+        //       that.$store.dispatch('setToken', data.token).then(() => {
+        //         that.$router.push({path: '/'})
+        //       })
+        //     } else {
+        //       that.$message({
+        //         showClose: true,
+        //         message: msg,
+        //         type: 'error'
+        //         })
+        //     }
+        // })
       }
     },
     message() {

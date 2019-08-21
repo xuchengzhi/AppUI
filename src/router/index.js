@@ -2,8 +2,8 @@ import en from '../i18n/lang/en'
 import Vue from 'vue'
 import Router from 'vue-router'
 import CommerViews from '@/views/commerViews'
-// import Login from '@/views/login/index'
-import Login from '@/views/login/login'
+import Login from '@/views/login/index'
+// import Login from '@/views/login/login'
 import Layout from '@/views/layout/layout'
 import HomeMain from '@/views/index/mainIndex'
 // 不是必须加载的组件使用懒加载
@@ -30,6 +30,7 @@ const btnPermissions = () => import('@/views/permissions/btnPermissions')
 const applist = () => import('@/views/AppManage/apphome')
 const appupload = () => import('@/views/AppManage/appupload')
 const appdetail = () => import('@/views/AppManage/AppDetail')
+const autopay = () => import('@/views/AuToPay/index')
 
 Vue.use(Router)
 let routeNmae = en.routeNmae
@@ -43,6 +44,12 @@ let defaultRouter = [
     path: '/login',
     component: Login,
     name: '',
+    hidden: true,
+    children: []
+  },
+  { path: '/autopay',
+    component: autopay,
+    name: '自动购买',
     hidden: true,
     children: []
   },
