@@ -6,12 +6,13 @@
   </iframe>
   </el-aside> -->
   <el-main style="margin-top:10%">
-      <div>
+      <div >
     <el-row :gutter="20">
       <el-col :span="8">
+      <p class="title">在线设备</p>
         <div class="card kjfs" style="margin-right:2px;background-color: rgba(233, 238, 243, 0.23);">
-          <p class="title">在线设备</p>
-          <el-row>
+          
+          <el-row style="height: 480px;">
             <el-col :span="10" v-for="(item,index) in dev" >
               <el-card style="margin-right:5px">
                 <img :src="item.img" class="image">
@@ -32,12 +33,13 @@
         </div>
       </el-col>
       <el-col :span="8">
+        <p class="title">执行脚本</p>
         <div class="card dbsx" style="margin-right:2px;background-color: rgba(233, 238, 243, 0.23);">
-          <!-- <p class="title">&nbsp</p> -->
+          
               <div>
               <el-button @click="actRun">运行</el-button>
               <div>
-              <el-button @click="DeviceUp">设备更新</el-button>
+              <el-button plain v-loading="loading" @click="DeviceUp" type="primary">设备更新</el-button>
               </div>
               <div>
               <el-radio v-model="apps" label="oppo">oppo</el-radio>
@@ -76,10 +78,10 @@
         </div>
       </el-col>
       <el-col :span="8">
-
-        <div class="card kjfs">
-          <p class="title">&nbsp</p>
+        <p class="title">日志</p>
+        <div class="card kjfs" style="margin-right:2px;background-color: rgba(233, 238, 243, 0.23);">
           
+          <div id = "ms" style="height: 480px;"></div>
         </div>
       </el-col>
     </el-row>
@@ -110,6 +112,7 @@ export default {
             res: "",
             apps: 'oppo',
             centerDialogVisible: false,
+            loading: false,
             
         }
     },
@@ -124,9 +127,48 @@ export default {
         //    },100000); 
         // }
         this.GetDevice()
+        // this.ShowLog()
         
     },
+    created(){
+           //页面刚进入时开启长连接
+            this.initWebSocket()
+    },
+　　destroyed: function() {
+　　　　//页面销毁时关闭长连接
+　　　　this.websocketclose();
+　　},
     methods: {
+      initWebSocket(){ //初始化weosocket
+          const wsuri = `ws://localhost:8090/log`//这个地址由后端童鞋提供
+          this.websock = new WebSocket(wsuri);
+          this.websock.onmessage = this.websocketonmessage;
+          this.websock.onopen = this.websocketonopen;
+          this.websock.onerror = this.websocketonerror;
+          this.websock.onclose = this.websocketclose;
+        },
+        websocketonopen(){ //连接建立之后执行send方法发送数据
+          this.websocketsend(this.user)
+          console.log(111);
+        },
+        websocketonerror(){//连接建立失败重连
+          this.initWebSocket()
+        },
+        websocketonmessage(evt){
+          let _this = this //数据接收
+          if ( evt.data.indexOf("\\u") != -1) {
+              document.getElementById('ms').innerText= this.Hanzi(evt.data);
+          }else{
+              document.getElementById('ms').innerText= evt.data;
+          }
+          
+        },
+        websocketsend(Data){//数据发送
+          this.websock.send(Data)
+        },
+        websocketclose(e){  //关闭
+          console.log('断开连接', e)
+        },
         GetDevice() {
             device().then(res => {
               let { code, msg, info } = res;
@@ -165,10 +207,23 @@ export default {
               this.$message.error("无在线设备，请确认设备已连接，点击更新设备按钮重新获取设备列表");
             }
         },
+
+        Hanzi(msg) {
+          msg = msg.split("\\u");
+          var str ='';
+          for(var i=0;i<msg.length;i++){
+              str+=String.fromCharCode(parseInt(msg[i],16).toString(10));
+          } 
+          return str;
+        },
+        
+        
         DeviceUp(){
-            devupdate().then(res => {
-            });
-            this.GetDevice();
+          this.loading = true;
+          devupdate().then(res => {
+          });
+          this.GetDevice();
+          this.loading = false;
         }
     }
 }
