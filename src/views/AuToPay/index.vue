@@ -185,23 +185,38 @@ export default {
             });
         },
         actRun() {
-            this.centerDialogVisible = true;
-            this.res = "";
             
+            this.res = "";
+      
 
             if (this.dev.length >0) {
-              for (var i = this.dev.length - 1; i >= 0; i--) {
-                console.log(this.dev[i].Online);
-                if (this.dev[i].Online == true && this.dev[i].name == this.apps ) {
-                  this.url = "http://"+this.dev[i].ip+":7912/remote";
-                  this.ip = this.dev[i].ip;
-                  this.show = true;
+              
+              for (var i =  0; i < this.dev.length; i++) {
+                if (this.dev[i].Online == true) {
+                  if (this.apps == "huawei" &&  (this.dev[i].name == this.apps || this.dev[i].name == "HONOR")){
+                    this.url = "http://"+this.dev[i].ip+":7912/remote";
+                    this.ip = this.dev[i].ip;
+                  }else if (this.dev[i].name == this.apps){
+                    this.url = "http://"+this.dev[i].ip+":7912/remote";
+                    this.ip = this.dev[i].ip;
+                  }
+                  
+                  
                 }
               }
-              act_run(this.apps+"&"+this.ip).then(res => {
+              if(this.ip != ""){
+                this.show = true;
+                this.centerDialogVisible = true;
+                act_run(this.apps+"&"+this.ip).then(res => {
                 let { code, msg, info } = res;
                 this.res = info;
-              }); 
+                }
+                );
+              }else{
+
+                this.$message.error(this.apps+"无在线设备");
+              }
+              
             }
             else{
               this.$message.error("无在线设备，请确认设备已连接，点击更新设备按钮重新获取设备列表");
@@ -214,14 +229,17 @@ export default {
           for(var i=0;i<msg.length;i++){
               str+=String.fromCharCode(parseInt(msg[i],16).toString(10));
           } 
-          return str;
+
+          return str+"\n";
         },
         
         
         DeviceUp(){
           this.loading = true;
           devupdate().then(res => {
+
           });
+           this.$message("设备信息已更新");
           this.GetDevice();
           this.loading = false;
         }
