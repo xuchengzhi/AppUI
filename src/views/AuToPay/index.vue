@@ -1,11 +1,11 @@
 <template>
   <el-container>
-  <el-header>购买字体</el-header>
+  <!-- <el-header>购买字体</el-header> -->
   <!-- <el-aside width="200px">
     <iframe v-show="show" id="show-iframe"  frameborder=0 name="showHere" scrolling=auto :src="ip" style="width: 450px;height: 800px;">
   </iframe>
   </el-aside> -->
-  <el-main style="margin-top:10%">
+  <el-main>
       <div >
     <el-row :gutter="20">
       <el-col :span="8">
@@ -14,6 +14,7 @@
           
           <el-row style="height: 480px;">
             <el-col :span="10" v-for="(item,index) in dev" >
+              
               <el-card style="margin-right:5px">
                 <img :src="item.img" class="image">
               </el-card>
@@ -34,16 +35,17 @@
       </el-col>
       <el-col :span="8">
         <p class="title">执行脚本</p>
-        <div class="card dbsx" style="margin-right:2px;background-color: rgba(233, 238, 243, 0.23);">
-          
+        <div class="card dbsx" style="height: 480px;margin-right:2px;background-color: rgba(233, 238, 243, 0.23);">
+              <div style="text-align: center;">
               <div>
-              <el-button @click="actRun">运行</el-button>
+              <el-button @click="actRun" style="margin-top:100px">运行</el-button>
               <div>
-              <el-button plain v-loading="loading" @click="DeviceUp" type="primary">设备更新</el-button>
+              <el-button plain v-loading="loading" @click="DeviceUp" type="primary" style="margin-top:10%">设备更新</el-button>
               </div>
               <div>
-              <el-radio v-model="apps" label="oppo">oppo</el-radio>
-              <el-radio v-model="apps" label="huawei">华为</el-radio>
+              <el-radio v-model="apps" label="oppo" style="margin-top:10%">oppo</el-radio>
+              <el-radio v-model="apps" label="huawei" style="margin-top:10%">华为</el-radio>
+              </div>
               </div>
               <el-dialog
                   title="实时显示"
@@ -79,10 +81,16 @@
       </el-col>
       <el-col :span="8">
         <p class="title">日志</p>
-        <div class="card kjfs" style="margin-right:2px;background-color: rgba(233, 238, 243, 0.23);">
-          
-          <div id = "ms" style="height: 480px;"></div>
+        <ul>
+
+        <div class="card kjfs" style="margin-right:2px;background-color: rgba(233, 238, 243, 0.23);height: 480px;">
+        <li>
+          <div style="text-align: center;">
+          <span id = "ms"></span>
+          </div>
+        </li>
         </div>
+        </ul>
       </el-col>
     </el-row>
   </div>
@@ -99,9 +107,9 @@
 <script>
 import axios from 'axios';
 import { device,act_run,orders,devupdate,atx,adb } from '../../api/autopay';
-// import loading from 'loading'
+// import loading from '../views/loading'
 export default {
-    name: 'home',
+    name: 'autopay',
     data() {
         return {
             dev: [],
@@ -149,7 +157,7 @@ export default {
         },
         websocketonopen(){ //连接建立之后执行send方法发送数据
           this.websocketsend(this.user)
-          console.log(111);
+          // console.log(111);
         },
         websocketonerror(){//连接建立失败重连
           this.initWebSocket()
@@ -159,6 +167,7 @@ export default {
           if ( evt.data.indexOf("\\u") != -1) {
               document.getElementById('ms').innerText= this.Hanzi(evt.data);
           }else{
+              // console.log(evt.data);
               document.getElementById('ms').innerText= evt.data;
           }
           
@@ -171,15 +180,14 @@ export default {
         },
         GetDevice() {
             device().then(res => {
-              let { code, msg, info } = res;
-              
-              if (info.length == 0) {
+              let { code, msg, data } = res;
+              if (data != undefined && data.length == 0) {
                 this.$message("无在线设备，请确认设备已连接");
               }
+            
               if (code == 200){
                 // this.loadshow = false;
-
-                this.dev = info;
+                this.dev = data;
               }
               
             });
@@ -187,9 +195,9 @@ export default {
         actRun() {
             
             this.res = "";
-      
+    
 
-            if (this.dev.length >0) {
+            if (this.dev!=undefined && this.dev.lenth != 0) {
               
               for (var i =  0; i < this.dev.length; i++) {
                 if (this.dev[i].Online == true) {
@@ -237,9 +245,14 @@ export default {
         DeviceUp(){
           this.loading = true;
           devupdate().then(res => {
-
+            let { code, msg, data } = res;
+            if (code == 200) {
+              this.$message("设备信息已更新");
+            }else{
+              this.$message.error(data);
+            }
           });
-           this.$message("设备信息已更新");
+          
           this.GetDevice();
           this.loading = false;
         }
@@ -268,20 +281,20 @@ export default {
     text-align: center;
     line-height: 200px;
   }
-  
-  .el-main {
-    /*background-color: rgba(233, 238, 243, 0.23);*/
+/*  
+ .el-main {
+    background-color: rgba(233, 238, 243, 0.23);
     color: #333;
     text-align: center;
     line-height: 160px;
-  }
+  }*/
   
-  body > .el-container {
+/*  body > .el-container {
     margin-bottom: 40px;
     background: url(../img/banner2.jpg)no-repeat center;
     background-size: cover;
   }
-
+*/
   .el-container:nth-child(5) .el-aside,
   .el-container:nth-child(6) .el-aside {
     line-height: 260px;

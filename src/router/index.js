@@ -2,8 +2,8 @@ import en from '../i18n/lang/en'
 import Vue from 'vue'
 import Router from 'vue-router'
 import CommerViews from '@/views/commerViews'
-import Login from '@/views/login/index'
-// import Login from '@/views/login/login'
+// import Login from '@/views/login/index'
+import Login from '@/views/login/login'
 import Layout from '@/views/layout/layout'
 import HomeMain from '@/views/index/mainIndex'
 // 不是必须加载的组件使用懒加载
@@ -47,12 +47,7 @@ let defaultRouter = [
     hidden: true,
     children: []
   },
-  { path: '/autopay',
-    component: autopay,
-    name: '自动购买',
-    hidden: true,
-    children: []
-  },
+  
   {
     path: '/index',
     iconCls: 'fa fa-dashboard', // 图标样式class
@@ -79,26 +74,20 @@ let defaultRouter = [
 ]
 
 let addRouter = [
-  {
-    path: '/',
-    iconCls: 'el-icon-tickets', // 图标样式class
-    name: routeNmae.article,
+  
+  { path: '/',
+    iconCls: 'el-icon-shopping-bag-2',
     component: Layout,
+    name: routeNmae.autopay,
+    meta: {role: ['superAdmin']},
     children: [
-      {
-        path: '/addArticle',
-        iconCls: 'el-icon-edit-outline', // 图标样式class
-        name: routeNmae.publishArticle,
-        component: AddArticle,
-        children: []
-      },
-      {
-        path: '/addArticleEditor',
-        iconCls: 'el-icon-edit-outline', // 图标样式class
-        name: routeNmae.publishArticleEditor,
-        component: AddArticleEditor,
-        children: []
-      }
+    {
+      path: '/autopay',
+      iconCls: 'el-icon-shopping-bag-2',
+      name: routeNmae.autopay,
+      component: autopay,
+      children: []
+    }
     ]
   },
   {
@@ -119,9 +108,33 @@ let addRouter = [
   },
   {
     path: '/',
+    iconCls: 'el-icon-tickets', // 图标样式class
+    name: routeNmae.article,
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/addArticle',
+        iconCls: 'el-icon-edit-outline', // 图标样式class
+        name: routeNmae.publishArticle,
+        component: AddArticle,
+        children: []
+      },
+      {
+        path: '/addArticleEditor',
+        iconCls: 'el-icon-edit-outline', // 图标样式class
+        name: routeNmae.publishArticleEditor,
+        component: AddArticleEditor,
+        children: []
+      }
+    ]
+  },
+  {
+    path: '/',
     iconCls: 'fa fa-paw', // 图标样式class
     name: routeNmae.icon,
     component: Layout,
+    hidden: true,
     children: [
       {
         path: '/icon',
@@ -137,6 +150,7 @@ let addRouter = [
     iconCls: 'fa fa-exchange', // 图标样式class
     name: routeNmae.shuttleBox,
     component: Layout,
+    hidden: true,
     children: [
       {
         path: '/transfer',
@@ -152,6 +166,7 @@ let addRouter = [
     iconCls: 'fa fa-universal-access', // 图标样式class
     name: routeNmae.permissions,
     component: Layout,
+    hidden: true,
     children: [
       {
         path: '/pagePermissions',
@@ -174,6 +189,7 @@ let addRouter = [
     iconCls: 'fa fa-newspaper-o', // 图标样式class
     name: routeNmae.table,
     component: Layout,
+    // hidden: true,
     children: [
       {
         path: '/dataTable',
@@ -204,6 +220,7 @@ let addRouter = [
     iconCls: 'fa fa-server',
     name: routeNmae.multiDirectory,
     component: Layout,
+    // hidden: true,
     children: [
       {
         path: '/erji1',

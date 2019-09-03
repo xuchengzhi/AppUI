@@ -33,8 +33,8 @@ router.beforeEach((to, from, next) => {
           await store.dispatch('newRoutes', store.getters.info.role)
           console.log(store.getters.addRouters)
           await router.addRoutes(store.getters.addRouters)
-          // next({path: '/index'})
-          next({path: '/autopay'})
+          next({path: '/index'})
+          // next({path: '/autopay'})
         }()
       } else {
         let is404 = to.matched.some(record => {

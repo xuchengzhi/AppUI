@@ -3,34 +3,56 @@
     <el-row :gutter="20">
       <el-col :span="8">
         <div class="card kjfs">
-          <p class="title"><i class="fa fa-th-large fa-lg"></i>项目</p>
+          <p class="title"><i class="fa fa-cogs fa-lg"></i>服务</p>
           <ul>
-            <li><router-link to="/addArticle" class="kjfs kjfs-bluee"><span><i class="el-icon-tickets fa-2x"></i></span><span>发表文章</span></router-link></li>
-            <li><router-link to="/dragTabe" class="kjfs kjfs-pinkk"><span><i class="fa fa-hand-stop-o fa-2x"></i></span><span>拖拽排序</span></router-link></li>
-            <li><router-link to="/pagePermissions" class="kjfs kjfs-yelloww"><span><i class="fa fa-universal-access fa-2x"></i></span><span>权限测试</span></router-link></li>
+            <li><router-link to="/addArticle" class="kjfs kjfs-bluee" disabled><span><i class="el-icon-tickets fa-2x"></i></span><span>Adb服务</span></router-link></li>
+            <li><router-link to="/dragTabe" class="kjfs kjfs-pinkk" disabled><span><i class="fa fa-hand-stop-o fa-2x"></i></span><span>Atx服务</span></router-link></li>
+            <li><router-link to="/pagePermissions" class="kjfs kjfs-yelloww" disabled><span><i class="fa fa-universal-access fa-2x"></i></span><span>autopay服务</span></router-link></li>
           </ul>
           <ul>
-            <li><router-link to="/upload" class="kjfs kjfs-grennn"><span><i class="fa fa-cloud-upload fa-2x"></i></span><span>文件上传</span></router-link></li>
-            <li><router-link to="/navClassifies" class="kjfs kjfs-purplee"><span><i class="fa el-icon-menu fa-2x"></i></span><span>前台菜单</span></router-link></li>
-            <li><router-link to="/markdown" class="kjfs kjfs-lightBluee"><span><i class="fa fa-file-code-o fa-2x"></i></span><span>编辑器</span></router-link></li>
+            <li><router-link to="/appupload" class="kjfs kjfs-grennn"><span><i class="fa fa-cloud-upload fa-2x"></i></span><span>app上传</span></router-link></li>
+            <li><router-link to="/navClassifies" class="kjfs kjfs-purplee" disabled><span><i class="fa el-icon-menu fa-2x"></i></span><span>前台菜单</span></router-link></li>
+            <li><router-link to="/markdown" class="kjfs kjfs-lightBluee" disabled><span><i class="fa fa-file-code-o fa-2x"></i></span><span>编辑器</span></router-link></li>
           </ul>
         </div>
       </el-col>
       <el-col :span="8">
         <div class="card dbsx">
-          <p class="title"><i class="fa fa-file-text-o"></i>待办事项</p>
+          <p class="title"><i class="fa fa-file-text-o"></i>自动化测试</p>
           <ul>
-            <li><router-link to="#"><span>待审评论</span><span class="num">66</span></router-link></li>
-            <li><router-link to="#"><span>待审帖子</span><span class="num">66</span></router-link></li>
+            <li><router-link to="#"><span>接口数</span><span class="num">66</span></router-link></li>
+            <li><router-link to="#"><span>bug数</span><span class="num">66</span></router-link></li>
           </ul>
           <ul>
-            <li><router-link to="#"><span>待审商品</span><span class="num">66</span></router-link></li>
-            <li><router-link to="#"><span>代发货</span><span class="num">66</span></router-link></li>
+            <li><router-link to="#"><span>项目</span><span class="num">66</span></router-link></li>
+            <li><router-link to="#"><span>脚本</span><span class="num">66</span></router-link></li>
           </ul>
         </div>
       </el-col>
+      
       <el-col :span="8">
-        <!-- <div class="card bbxx">
+        <div class="card kjfs">
+          <p class="title"><i class="fa fa-server fa-lg"></i>自动化脚本</p>
+          <ul>
+            <!-- <AutoPay></AutoPay> -->
+            <li><router-link to="/autopay" class="kjfs kjfs-bluee"><span><i class="el-icon-shopping-bag-2 fa-2x"></i></span><span>购买字体</span></router-link></li>
+            <li><router-link to="/autopay" class="kjfs kjfs-pinkk"><span><i class="el-icon-shopping-bag-2 fa-2x"></i></span><span>购买字体</span></router-link></li>
+            <li><router-link to="/autopay" class="kjfs kjfs-yelloww"><span><i class="el-icon-shopping-bag-2 fa-2x"></i></span><span>购买字体</span></router-link></li>
+            <!-- <li><router-link to="/dragTabe" class="kjfs kjfs-pinkk"><span><i class="fa fa-hand-stop-o fa-2x"></i></span><span>拖拽排序</span></router-link></li>
+            <li><router-link to="/pagePermissions" class="kjfs kjfs-yelloww"><span><i class="fa fa-universal-access fa-2x"></i></span><span>权限测试</span></router-link></li> -->
+          </ul>
+          <ul>
+            <!-- <li><router-link to="/upload" class="kjfs kjfs-grennn"><span><i class="fa fa-cloud-upload fa-2x"></i></span><span>文件上传</span></router-link></li>
+            <li><router-link to="/navClassifies" class="kjfs kjfs-purplee"><span><i class="fa el-icon-menu fa-2x"></i></span><span>前台菜单</span></router-link></li>
+            <li><router-link to="/markdown" class="kjfs kjfs-lightBluee"><span><i class="fa fa-file-code-o fa-2x"></i></span><span>编辑器</span></router-link></li> -->
+            <li><router-link to="/autopay" class="kjfs kjfs-grennn"><span><i class="el-icon-shopping-bag-2 fa-2x"></i></span><span>购买字体</span></router-link></li>
+            <li><router-link to="/autopay" class="kjfs kjfs-purplee"><span><i class="el-icon-shopping-bag-2 fa-2x"></i></span><span>购买字体</span></router-link></li>
+            <li><router-link to="/autopay" class="kjfs kjfs-lightBluee"><span><i class="el-icon-shopping-bag-2 fa-2x"></i></span><span>购买字体</span></router-link></li>
+          </ul>
+        </div>
+      </el-col>
+      <!-- <el-col :span="8">
+        <div class="card bbxx">
           <p class="title"><i class="fa fa-server"></i>版本信息</p>
           <div class="table">
             <p><span class="tit">当前版本</span>v1.0.0</p>
@@ -43,23 +65,10 @@
                 </span>
             </p>
           </div>
-        </div> -->
-        <div class="card kjfs">
-          <p class="title"><i class="fa fa-th-large fa-lg"></i>快捷方式</p>
-          <ul>
-            <li><router-link to="/addArticle" class="kjfs kjfs-bluee"><span><i class="el-icon-tickets fa-2x"></i></span><span>发表文章</span></router-link></li>
-            <li><router-link to="/dragTabe" class="kjfs kjfs-pinkk"><span><i class="fa fa-hand-stop-o fa-2x"></i></span><span>拖拽排序</span></router-link></li>
-            <li><router-link to="/pagePermissions" class="kjfs kjfs-yelloww"><span><i class="fa fa-universal-access fa-2x"></i></span><span>权限测试</span></router-link></li>
-          </ul>
-          <ul>
-            <li><router-link to="/upload" class="kjfs kjfs-grennn"><span><i class="fa fa-cloud-upload fa-2x"></i></span><span>文件上传</span></router-link></li>
-            <li><router-link to="/navClassifies" class="kjfs kjfs-purplee"><span><i class="fa el-icon-menu fa-2x"></i></span><span>前台菜单</span></router-link></li>
-            <li><router-link to="/markdown" class="kjfs kjfs-lightBluee"><span><i class="fa fa-file-code-o fa-2x"></i></span><span>编辑器</span></router-link></li>
-          </ul>
         </div>
-      </el-col>
+      </el-col> -->
     </el-row>
-    <el-row>
+    <!-- <el-row>
       <el-col :span="24">
         <line-echarts id="lineEcharts" height="300px" ref="echarts"></line-echarts>
       </el-col>
@@ -68,13 +77,14 @@
       <el-col :span="24">
         <maintable id="maintable"></maintable>
       </el-col>
-    </el-row>
+    </el-row> -->
   </div>
 </template>
 
 <script>
 import LineEcharts from '../../components/ECharts/lineEcharts'
 import Maintable from '../table/maintable'
+import AutoPay from '../AutoPay/index'
 export default {
   data(){
     return {
@@ -82,7 +92,7 @@ export default {
     }
   },
   name: 'mainIndex',
-  components: {Maintable, LineEcharts},
+  components: {Maintable, LineEcharts,AutoPay},
   mounted () {
     this.selfAdaption()
   },

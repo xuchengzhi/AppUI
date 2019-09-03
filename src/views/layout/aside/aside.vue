@@ -2,8 +2,8 @@
   <div>
     <el-aside id="asideNav">
       <div class="logo-name">
-        <p v-if="$store.getters.logoShow">XU</p>
-        <p v-else>自动化测试系统</p>
+        <p v-if="$store.getters.logoShow"></p>
+        <p v-else>自动化测试管理系统</p>
       </div>
       <el-menu :default-active="$route.path" class="el-menu-vertical"
                @select="selectmenu"

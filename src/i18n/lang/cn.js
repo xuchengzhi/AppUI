@@ -10,6 +10,7 @@ const cn = {
     home: '主页',
     appmanage: 'App托管',
     appupload: 'App上传',
+    autopay: '自动购买字体',
     article: '文章管理',
     publishArticle: '发表文章',
     publishArticleEditor: '发表文章-富文本',

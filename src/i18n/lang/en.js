@@ -11,6 +11,7 @@ const en = {
     home: 'home',
     appmanage: 'appmanage',
     appupload: 'appupload',
+    autopay: 'autopay',
     article: 'article',
     publishArticle: 'publishArticle',
     publishArticleEditor: 'publishArticleEditor',
