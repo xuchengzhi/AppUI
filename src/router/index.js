@@ -134,7 +134,7 @@ let addRouter = [
     iconCls: 'fa fa-paw', // 图标样式class
     name: routeNmae.icon,
     component: Layout,
-    hidden: true,
+    // hidden: true,
     children: [
       {
         path: '/icon',
@@ -189,7 +189,7 @@ let addRouter = [
     iconCls: 'fa fa-newspaper-o', // 图标样式class
     name: routeNmae.table,
     component: Layout,
-    // hidden: true,
+    hidden: true,
     children: [
       {
         path: '/dataTable',
@@ -220,7 +220,7 @@ let addRouter = [
     iconCls: 'fa fa-server',
     name: routeNmae.multiDirectory,
     component: Layout,
-    // hidden: true,
+    hidden: true,
     children: [
       {
         path: '/erji1',
@@ -295,6 +295,7 @@ let addRouter = [
     iconCls: 'fa fa-cloud-upload', // 图标样式class
     name: routeNmae.upload,
     component: Layout,
+    hidden: true,
     meta: {role: ['superAdmin']},
     children: [
       {
