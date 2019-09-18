@@ -10,6 +10,7 @@
     <el-row :gutter="20">
       <el-col :span="8">
       <p class="title">在线设备</p>
+      <el-amap vid="amapDemo" :zoom="zoom" :center="center"></el-amap>
         <div class="card kjfs" style="margin-right:2px;background-color: rgba(233, 238, 243, 0.23);">
           
           <el-row style="height: 480px;">

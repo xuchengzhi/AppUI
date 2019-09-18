@@ -6,6 +6,7 @@ import CommerViews from '@/views/commerViews'
 import Login from '@/views/login/login'
 import Layout from '@/views/layout/layout'
 import HomeMain from '@/views/index/mainIndex'
+// import TestPage from '@views/TestPage/TP'
 // 不是必须加载的组件使用懒加载
 const Icon = () => import('@/views/icon/index')
 const Erji = () => import('@/views/duoji/erji')
@@ -31,6 +32,9 @@ const applist = () => import('@/views/AppManage/apphome')
 const appupload = () => import('@/views/AppManage/appupload')
 const appdetail = () => import('@/views/AppManage/AppDetail')
 const autopay = () => import('@/views/AuToPay/index')
+const TestPage = () => import('@/views/TestPage/TP')
+const Maps = () => import('@/views/map/Map')
+
 
 Vue.use(Router)
 let routeNmae = en.routeNmae
@@ -47,7 +51,20 @@ let defaultRouter = [
     hidden: true,
     children: []
   },
-  
+  {
+    path: '/map',
+    component: Maps,
+    name:"Maps",
+    hidden: true,
+    children: []
+  },
+  {
+    path: '/test',
+    component: TestPage,
+    name:"ceshi",
+    hidden: true,
+    children: []
+  },
   {
     path: '/index',
     iconCls: 'fa fa-dashboard', // 图标样式class

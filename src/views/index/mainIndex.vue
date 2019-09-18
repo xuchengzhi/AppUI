@@ -5,6 +5,7 @@
         <div class="card kjfs">
           <p class="title"><i class="fa fa-cogs fa-lg"></i>服务</p>
           <ul>
+
             <li><router-link to="/addArticle" class="kjfs kjfs-bluee" disabled><span><i class="el-icon-tickets fa-2x"></i></span><span>Adb服务</span></router-link></li>
             <li><router-link to="/dragTabe" class="kjfs kjfs-pinkk" disabled><span><i class="fa fa-hand-stop-o fa-2x"></i></span><span>Atx服务</span></router-link></li>
             <li><router-link to="/pagePermissions" class="kjfs kjfs-yelloww" disabled><span><i class="fa fa-universal-access fa-2x"></i></span><span>autopay服务</span></router-link></li>
@@ -36,7 +37,7 @@
           <ul>
             <!-- <AutoPay></AutoPay> -->
             <li><router-link to="/autopay" class="kjfs kjfs-bluee"><span><i class="el-icon-shopping-bag-2 fa-2x"></i></span><span>购买字体</span></router-link></li>
-            <li><router-link to="/autopay" class="kjfs kjfs-pinkk"><span><i class="el-icon-shopping-bag-2 fa-2x"></i></span><span>购买字体</span></router-link></li>
+            <li><router-link to="/map" class="kjfs kjfs-pinkk"><span><i class="el-icon-shopping-bag-2 fa-2x"></i></span><span>地图</span></router-link></li>
             <li><router-link to="/autopay" class="kjfs kjfs-yelloww"><span><i class="el-icon-shopping-bag-2 fa-2x"></i></span><span>购买字体</span></router-link></li>
             <!-- <li><router-link to="/dragTabe" class="kjfs kjfs-pinkk"><span><i class="fa fa-hand-stop-o fa-2x"></i></span><span>拖拽排序</span></router-link></li>
             <li><router-link to="/pagePermissions" class="kjfs kjfs-yelloww"><span><i class="fa fa-universal-access fa-2x"></i></span><span>权限测试</span></router-link></li> -->
@@ -68,23 +69,28 @@
         </div>
       </el-col> -->
     </el-row>
-    <!-- <el-row>
+    
+    <el-row>
       <el-col :span="24">
-        <line-echarts id="lineEcharts" height="300px" ref="echarts"></line-echarts>
+        <!-- <line-echarts id="lineEcharts" height="300px" ref="echarts"></line-echarts> -->
+        <Maps></Maps>
       </el-col>
     </el-row>
-    <el-row>
+    <!-- <el-row>
       <el-col :span="24">
         <maintable id="maintable"></maintable>
       </el-col>
     </el-row> -->
+
   </div>
+  
 </template>
 
 <script>
 import LineEcharts from '../../components/ECharts/lineEcharts'
 import Maintable from '../table/maintable'
 import AutoPay from '../AutoPay/index'
+import Maps from '../map/Map'
 export default {
   data(){
     return {
@@ -92,7 +98,7 @@ export default {
     }
   },
   name: 'mainIndex',
-  components: {Maintable, LineEcharts,AutoPay},
+  components: {Maintable, LineEcharts,AutoPay,Maps},
   mounted () {
     this.selfAdaption()
   },
