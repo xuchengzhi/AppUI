@@ -44,6 +44,9 @@
               <el-button plain v-loading="loading" @click="DeviceUp" type="primary" style="margin-top:10%">设备更新</el-button>
               </div>
               <div>
+              <el-button plain v-loading="loading" @click="Atx" type="primary" style="margin-top:10%">启动atx</el-button>
+              </div>
+              <div>
               <el-radio v-model="apps" label="oppo" style="margin-top:10%">oppo</el-radio>
               <el-radio v-model="apps" label="huawei" style="margin-top:10%">华为</el-radio>
               </div>
@@ -177,18 +180,21 @@ export default {
           this.websock.send(Data)
         },
         websocketclose(e){  //关闭
-          console.log('断开连接', e)
+          // console.log('断开连接', e)
         },
         GetDevice() {
             device().then(res => {
               let { code, msg, data } = res;
-              if (data != undefined && data.length == 0) {
-                this.$message("无在线设备，请确认设备已连接");
-              }
+             
             
               if (code == 200){
+                  if (data != undefined && data.length == 0) {
+                  this.$message("无在线设备，请确认设备已连接");
+                  }
                 // this.loadshow = false;
                 this.dev = data;
+              }else{
+                this.$message(data);
               }
               
             });
@@ -205,7 +211,7 @@ export default {
                   if (this.apps == "huawei" &&  (this.dev[i].name == this.apps || this.dev[i].name == "HONOR")){
                     this.url = "http://"+this.dev[i].ip+":7912/remote";
                     this.ip = this.dev[i].ip;
-                  }else if (this.dev[i].name == this.apps){
+                  }else if (this.dev[i].name.toLowerCase() == this.apps){
                     this.url = "http://"+this.dev[i].ip+":7912/remote";
                     this.ip = this.dev[i].ip;
                   }
@@ -216,9 +222,17 @@ export default {
               if(this.ip != ""){
                 this.show = true;
                 this.centerDialogVisible = true;
-                act_run(this.apps+"&"+this.ip).then(res => {
-                let { code, msg, info } = res;
-                this.res = info;
+                let par = {"app":this.apps,"ip":this.ip };
+                act_run(par).then(res => {
+                let { code, msg, data } = res;
+                this.res = data;
+                console.log(data);
+                if (code != 200) {
+                  this.$message.error(data);
+                  this.show = false;
+                  this.centerDialogVisible = false;
+                }
+
                 }
                 );
               }else{
@@ -241,7 +255,21 @@ export default {
 
           return str+"\n";
         },
-        
+        Atx(){
+          this.loading = true;
+          atx().then(res => {
+            let { code, msg, data } = res;
+            if (code == 200) {
+              this.$message(data);
+              this.GetDevice();
+            }else{
+              this.$message.error(data);
+            }
+          });
+          
+          
+          this.loading = false;
+        },
         
         DeviceUp(){
           this.loading = true;

@@ -154,15 +154,15 @@ export default {
     console.log('go back');
   },
   beforeAvatarUpload(file) {
-      console.log("dddd"+file.type);
-      // application/x-itunes-ipa
-      const isApp = file.type === 'image/jpeg';
-      const isLt2M = file.size / 1024 / 1024 < 2;
-
-      if (!isApp) {
-        this.$message.error('只能上传apk和ipa文件');
-      }
-      return isApp;
+     
+      // console.log("dddd"+file.type);
+      // const isApp = (file.type === 'application/x-itunes-ipa' ||  file.type === 'application/x-itunes-ipa');
+      // const isLt2M = file.size / 1024 / 1024 < 2;
+      // console.log("dddd"+isApp);
+      // if (!isApp) {
+      //   this.$message.error('只能上传apk和ipa文件');
+      // }
+      return true;
     },
   }
 }
