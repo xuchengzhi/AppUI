@@ -6,8 +6,23 @@
           <p class="title"><i class="fa fa-cogs fa-lg"></i>服务</p>
           <ul>
 
-            <li><router-link to="/addArticle" class="kjfs kjfs-bluee" disabled><span><i class="el-icon-tickets fa-2x"></i></span><span>Adb服务</span></router-link></li>
-            <li><router-link to="/dragTabe" class="kjfs kjfs-pinkk" disabled><span><i class="fa fa-hand-stop-o fa-2x"></i></span><span>Atx服务</span></router-link></li>
+            <!-- <li><router-link to="/addArticle" class="kjfs kjfs-bluee" disabled><span><i class="el-icon-tickets fa-2x"></i></span><span>Adb服务</span></router-link></li> -->
+            <li>
+              <a @click="Adb" class="kjfs kjfs-bluee">
+              <span>
+              <i class="el-icon-tickets fa-2x"></i></span>
+              <span>Adb服务
+              </span>
+              </a>
+            </li>
+
+            <li>
+              <a @click="Atx" class="kjfs kjfs-pinkk">
+              <span><i class="fa fa-hand-stop-o fa-2x"></i></span>
+              <span>Atx服务</span>
+              </a>
+            </li>
+
             <li><router-link to="/pagePermissions" class="kjfs kjfs-yelloww" disabled><span><i class="fa fa-universal-access fa-2x"></i></span><span>autopay服务</span></router-link></li>
           </ul>
           <ul>
@@ -91,6 +106,8 @@ import LineEcharts from '../../components/ECharts/lineEcharts'
 import Maintable from '../table/maintable'
 import AutoPay from '../AutoPay/index'
 import Maps from '../map/Map'
+import axios from 'axios';
+import { device,act_run,orders,devupdate,atx,adb } from '../../api/autopay';
 export default {
   data(){
     return {
@@ -113,6 +130,28 @@ export default {
           }
         }
       }, 10)
+    },
+    Adb(){
+      adb().then(res => {
+        let { code, msg, data } = res;
+        if (code != 200) {
+          this.$message.error(data);
+        }else{
+          this.$message("在线设备："+data);
+        }
+      })
+      
+    },
+    Atx(){
+      atx().then(res => {
+        let { code, msg, data } = res;
+        if (code != 200) {
+          this.$message.error(data);
+        }else{
+          this.$message(data);
+        }
+      })
+      
     }
   }
 }
