@@ -35,7 +35,7 @@
       </el-form-item>
     </el-form>
     </div>
-        <el-button @click="AddCard" class="card">添加</el-button>
+        <el-button @click="AddCard" style = "margin-left: 48%;margin-top: 25px;">添加</el-button>
     </div>
     
         
@@ -97,8 +97,5 @@ export default {
     margin-top: 10%;
     margin-left:30%;
   }
-  .card {
-    margin-left: 48%;
-    margin-top: 25px;
-  }
+
 </style>
