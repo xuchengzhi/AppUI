@@ -12,6 +12,7 @@ const en = {
     appmanage: 'appmanage',
     appupload: 'appupload',
     autopay: 'autopay',
+    addcard: 'addcard',
     article: 'article',
     publishArticle: 'publishArticle',
     publishArticleEditor: 'publishArticleEditor',

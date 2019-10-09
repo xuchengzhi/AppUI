@@ -141,7 +141,9 @@ export default {
     requestApplist().then(res => {
           let { msg, code, data } = res;
           this.applist = data.List;
-        });
+        }).catch( () => {
+                    this.$message.error("数据请求失败");
+                });;
   },
   handleDownload(file) {
     console.log(file);

@@ -206,7 +206,9 @@ export default {
                 this.$message(data);
               }
               
-            });
+            }).catch( () => {
+                    this.$message.error("数据请求失败");
+                });;
         },
         actRun() {
             
@@ -243,7 +245,9 @@ export default {
                 }
 
                 }
-                );
+                ).catch( () => {
+                    this.$message.error("数据请求失败");
+                });;
               }else{
 
                 this.$message.error(this.apps+"无在线设备");
@@ -277,7 +281,9 @@ export default {
             }else{
               this.$message.error(data);
             }
-          });
+          }).catch( () => {
+                    this.$message.error("数据请求失败");
+                });;
           
           
           this.loading = false;
@@ -292,7 +298,9 @@ export default {
             }else{
               this.$message.error(data);
             }
-          });
+          }).catch( () => {
+                    this.$message.error("数据请求失败");
+                });;
           
           this.GetDevice();
           this.loading = false;

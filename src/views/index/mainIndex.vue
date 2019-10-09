@@ -27,7 +27,7 @@
           </ul>
           <ul>
             <li><router-link to="/appupload" class="kjfs kjfs-grennn"><span><i class="fa fa-cloud-upload fa-2x"></i></span><span>app上传</span></router-link></li>
-            <li><router-link to="/navClassifies" class="kjfs kjfs-purplee" disabled><span><i class="fa el-icon-menu fa-2x"></i></span><span>前台菜单</span></router-link></li>
+            <li><router-link to="/AddCard" class="kjfs kjfs-purplee" ><span><i class="fa el-icon-bank-card fa-2x"></i></span><span>添加充值卡</span></router-link></li>
             <li><router-link to="/markdown" class="kjfs kjfs-lightBluee" disabled><span><i class="fa fa-file-code-o fa-2x"></i></span><span>编辑器</span></router-link></li>
           </ul>
         </div>

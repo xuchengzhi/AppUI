@@ -11,6 +11,7 @@ const cn = {
     appmanage: 'App托管',
     appupload: 'App上传',
     autopay: '自动购买字体',
+    addcard: '添加充值卡',
     article: '文章管理',
     publishArticle: '发表文章',
     publishArticleEditor: '发表文章-富文本',

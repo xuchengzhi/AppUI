@@ -6,6 +6,7 @@ import CommerViews from '@/views/commerViews'
 import Login from '@/views/login/login'
 import Layout from '@/views/layout/layout'
 import HomeMain from '@/views/index/mainIndex'
+
 // import TestPage from '@views/TestPage/TP'
 // 不是必须加载的组件使用懒加载
 const Icon = () => import('@/views/icon/index')
@@ -32,6 +33,7 @@ const applist = () => import('@/views/AppManage/apphome')
 const appupload = () => import('@/views/AppManage/appupload')
 const appdetail = () => import('@/views/AppManage/AppDetail')
 const autopay = () => import('@/views/AuToPay/index')
+const Cards = () => import('@/views/AuToPay/Cards')
 const TestPage = () => import('@/views/TestPage/TP')
 const Maps = () => import('@/views/map/Map')
 
@@ -103,6 +105,13 @@ let addRouter = [
       iconCls: 'el-icon-shopping-bag-2',
       name: routeNmae.autopay,
       component: autopay,
+      children: []
+    },
+    {
+      path: '/AddCard',
+      iconCls: 'el-icon-bank-card',
+      name: routeNmae.addcard,
+      component: Cards,
       children: []
     }
     ]

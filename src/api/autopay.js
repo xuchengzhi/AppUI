@@ -16,3 +16,5 @@ export const ThriftAtxServer = () => { return axios.get('v1/thrift/ThriftAtxServ
 export const ThriftAdbServer = () => { return axios.get('v1/thrift/ThriftAdbServer').then(res => res.data) }
 
 export const ThriftActServer = () => { return axios.get('v1/thrift/ThriftActServer').then(res => res.data) }
+
+export const addcard = params => { return axios.post('v1/autopay/addcard',params).then(res => res.data) }
