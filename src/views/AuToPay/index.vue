@@ -168,12 +168,21 @@ export default {
         },
         websocketonmessage(evt){
           let _this = this //数据接收
-          if ( evt.data.indexOf("\\u") != -1) {
-              document.getElementById('ms').innerText= this.Hanzi(evt.data);
-          }else{
-              // console.log(evt.data);
-              document.getElementById('ms').innerText= evt.data;
-          }
+
+           
+          var tmp = evt.data.replace(/\\/g,"%");
+          var tmp1 = tmp.replace("[{","");
+          var tmp2 = tmp1.replace("}]","");
+          var str = tmp2.replace("%n","");
+          document.getElementById('ms').innerText = unescape(str)+"\n";
+          
+
+          // if ( evt.data.indexOf("\\u") != -1) {
+          //     document.getElementById('ms').innerText= this.Hanzi(evt.data);
+          // }else{
+          //     // console.log(evt.data);
+          //     document.getElementById('ms').innerText= evt.data;
+          // }
           
         },
         websocketsend(Data){//数据发送
@@ -249,8 +258,11 @@ export default {
         Hanzi(msg) {
           msg = msg.split("\\u");
           var str ='';
+        
           for(var i=0;i<msg.length;i++){
-              str+=String.fromCharCode(parseInt(msg[i],16).toString(10));
+            console.log(msg[i]+"\n");
+            str+=String.fromCharCode(parseInt(msg[i],16).toString(10));
+              
           } 
 
           return str+"\n";
