@@ -23,7 +23,7 @@
               </a>
             </li>
 
-            <li><router-link to="/pagePermissions" class="kjfs kjfs-yelloww" disabled><span><i class="fa fa-universal-access fa-2x"></i></span><span>autopay服务</span></router-link></li>
+            <li><a href="/task" class="kjfs kjfs-yelloww" ><span><i class="fa fa-universal-access fa-2x"></i></span><span>定时任务</span></a></li>
           </ul>
           <ul>
             <li><router-link to="/appupload" class="kjfs kjfs-grennn"><span><i class="fa fa-cloud-upload fa-2x"></i></span><span>app上传</span></router-link></li>
