@@ -36,7 +36,7 @@ const autopay = () => import('@/views/AuToPay/index')
 const Cards = () => import('@/views/AuToPay/Cards')
 const TestPage = () => import('@/views/TestPage/TP')
 const Maps = () => import('@/views/map/Map')
-
+const TIFOrder = () => import('@/views/AuToPay/TIFOrder')
 
 Vue.use(Router)
 let routeNmae = en.routeNmae

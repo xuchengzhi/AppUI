@@ -18,3 +18,18 @@ export const ThriftAdbServer = () => { return axios.get('v1/thrift/ThriftAdbServ
 export const ThriftActServer = () => { return axios.get('v1/thrift/ThriftActServer').then(res => res.data) }
 
 export const addcard = params => { return axios.post('v1/autopay/addcard',params).then(res => res.data) }
+
+export const orderlist = params => { return axios.post('v1/autopay/orderlist',params).then(res => res.data) }
+
+
+export const addjob = params => { return axios.post('v1/autopay/addjob',params).then(res => res.data) }
+
+export const getcloudfont = params => { return axios.post('v1/photo/getcloudfont',params).then(res => res.data) }
+
+export const TIFlist = params => { return axios.post('v1/autopay/TIFList',params).then(res => res.data) }
+// 安装字体记录
+
+export const TIFSearch = params => { return axios.post('v1/autopay/TIFSearch',params).then(res => res.data) }
+
+
+

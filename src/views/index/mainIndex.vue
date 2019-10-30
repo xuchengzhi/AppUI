@@ -96,12 +96,15 @@
         <maintable id="maintable"></maintable>
       </el-col>
     </el-row> -->
-
+    <TIFOrder></TIFOrder>
+    <Order></Order>
   </div>
   
 </template>
 
 <script>
+import TIFOrder from '../AutoPay/TIFOrder';
+import Order from '../AutoPay/Order';
 import LineEcharts from '../../components/ECharts/lineEcharts'
 import Maintable from '../table/maintable'
 import AutoPay from '../AutoPay/index'
@@ -115,7 +118,7 @@ export default {
     }
   },
   name: 'mainIndex',
-  components: {Maintable, LineEcharts,AutoPay,Maps},
+  components: {Maintable, LineEcharts,AutoPay,Maps,TIFOrder,Order},
   mounted () {
     this.selfAdaption()
   },

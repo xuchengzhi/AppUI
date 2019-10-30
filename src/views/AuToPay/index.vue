@@ -7,7 +7,7 @@
   </el-aside> -->
   <el-main>
       <div >
-    <el-row :gutter="20">
+      <el-row :gutter="20">
       <el-col :span="8">
       <p class="title">在线设备</p>
       <el-amap vid="amapDemo" :zoom="zoom" :center="center"></el-amap>
@@ -49,6 +49,9 @@
               <div>
               <el-radio v-model="apps" label="oppo" style="margin-top:10%">oppo</el-radio>
               <el-radio v-model="apps" label="huawei" style="margin-top:10%">华为</el-radio>
+              <div>
+                <a :href="url" v-if="url != ''">查看实时页面</a>
+              </div>
               </div>
               </div>
               <el-dialog
@@ -84,7 +87,7 @@
         </div>
       </el-col>
       <el-col :span="8">
-        <p class="title">日志</p>
+        <p class="title">日志</p><input type="text" name="logip">
         <ul>
 
         <div class="card kjfs" style="margin-right:2px;background-color: rgba(233, 238, 243, 0.23);height: 480px;">
@@ -98,18 +101,18 @@
       </el-col>
     </el-row>
   </div>
+  
   </el-main>
+  
 
   </el-container>
-
-
-  
 
 </template>
 
               
 <script>
 import axios from 'axios';
+
 import { device,act_run,orders,devupdate,atx,adb } from '../../api/autopay';
 // import loading from '../views/loading'
 export default {
@@ -122,13 +125,16 @@ export default {
             url: "",
             ip: "",
             res: "",
+            logip:"192.168.248.158",
             apps: 'oppo',
             centerDialogVisible: false,
             loading: false,
             
         }
     },
-    // components: {loading},
+    // components: {
+      
+    // },//components
     mounted:function () {
         
         // if (this.timer){
@@ -139,6 +145,7 @@ export default {
         //    },100000); 
         // }
         this.GetDevice()
+        this.getmyip()
         // this.ShowLog()
         
     },
@@ -152,7 +159,7 @@ export default {
 　　},
     methods: {
       initWebSocket(){ //初始化weosocket
-          const wsuri = `ws://localhost:8090/log`//这个地址由后端童鞋提供
+          const wsuri = `ws://`+this.logip+`:8090/log`//这个地址由后端童鞋提供
           this.websock = new WebSocket(wsuri);
           this.websock.onmessage = this.websocketonmessage;
           this.websock.onopen = this.websocketonopen;
@@ -209,6 +216,24 @@ export default {
             }).catch( () => {
                     this.$message.error("数据请求失败");
                 });;
+        },
+        getmyip(){
+          var os = require('os'), ipaddress = '', ifaces = os.networkInterfaces() // 获取本机ip
+          this.$message(ifaces);
+          out:
+          for (var i in ifaces) {
+            for (var j in ifaces[i]) {
+              var val = ifaces[i][j]
+
+              if (val.family === 'IPv4' && val.address !== '127.0.0.1') {
+                ipaddress = val.address
+                break out
+              }
+            }
+          }
+          // module.exports = ipaddress
+          
+          
         },
         actRun() {
             
@@ -328,7 +353,7 @@ export default {
     background-color: #D3DCE6;
     color: #333;
     text-align: center;
-    line-height: 200px;
+    line-height: 400px;
   }
 /*  
  .el-main {
