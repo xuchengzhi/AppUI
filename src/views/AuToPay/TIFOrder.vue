@@ -57,7 +57,7 @@ export default {
     },
     methods: {
         TIF(){
-            let par = {"pagesize":20,"name":this.fontname};
+            let par = {"pagesize":1000,"name":this.fontname};
             TIFlist(par).then(res => {
                 let { code, msg, data } = res;
                 if (code == 200) {
