@@ -87,7 +87,8 @@
         </div>
       </el-col>
       <el-col :span="8">
-        <p class="title">日志</p><input type="text" name="logip">
+        <p class="title">日志</p>
+        <!-- <input type="text" name="logip"> -->
         <ul>
 
         <div class="card kjfs" style="margin-right:2px;background-color: rgba(233, 238, 243, 0.23);height: 480px;">

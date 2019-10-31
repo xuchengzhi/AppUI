@@ -71,7 +71,7 @@ export default {
                 });
         },
         TIFSearch(){
-            let par = {"pagesize":20,"name":this.fontname};
+            let par = {"pagesize":1000,"name":this.fontname};
             TIFSearch(par).then(res => {
                 let { code, msg, data } = res;
                 if (code == 200) {

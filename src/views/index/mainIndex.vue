@@ -98,11 +98,20 @@
     </el-row> -->
     <TIFOrder></TIFOrder>
     <Order></Order>
+    <float-icons padding="10 10 60 10" class="icons-warp">
+    <div class="float-icon-item">
+    <img src="../img/phone.png" alt="" @click="handleIcons('home')">
+    <span>查看</span>
+    </div>
+    </float-icons>
   </div>
+
+
   
 </template>
 
 <script>
+import FloatIcons from '../s-icons'
 import TIFOrder from '../AutoPay/TIFOrder';
 import Order from '../AutoPay/Order';
 import LineEcharts from '../../components/ECharts/lineEcharts'
@@ -118,7 +127,7 @@ export default {
     }
   },
   name: 'mainIndex',
-  components: {Maintable, LineEcharts,AutoPay,Maps,TIFOrder,Order},
+  components: {Maintable, LineEcharts,AutoPay,Maps,TIFOrder,Order,'float-icons': FloatIcons,},
   mounted () {
     this.selfAdaption()
   },
@@ -133,6 +142,10 @@ export default {
           }
         }
       }, 10)
+    },
+    handleIcons(router) {
+      console.log('router', router)
+      // this.$router.push(router)
     },
     Adb(){
       adb().then(res => {
@@ -310,4 +323,25 @@ export default {
     padding-#{$top}: 10px;
     @extend %shadow;
   }
+  .icons-warp {
+    border-radius: 25px;
+    .float-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    img {
+      width: 25px;
+      height: 25px;
+      margin-bottom: 3px;
+    }
+    span {
+      font-size: 9px;
+      color: #666666;
+    }
+  }
+}
 </style>
