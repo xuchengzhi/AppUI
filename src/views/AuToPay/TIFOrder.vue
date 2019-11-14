@@ -27,6 +27,14 @@
             <el-table-column prop="phone" align="center" sortable label="账号">
             </el-table-column>
             <el-table-column prop="ip" align="center" label="执行设备ip">
+
+                <template slot-scope="scope">
+                    {{scope.row.ip}}
+                  <!--   <a :href= "'http://'+scope.row.ip+':7912'" target="">实时查看执行过程</a> -->
+                  
+                  <el-button @click="ActShow(scope.row.ip)">实时查看执行过程</el-button>
+
+                </template>
             </el-table-column>
             <!-- <el-table-column
             align="right">
@@ -34,8 +42,15 @@
             </el-table-column> -->
 
         </el-table>
+        <el-dialog
+          title="实时监控"
+          :visible.sync="dialogVisible"
+          width="30%">
+            <iframe :src="showip" ref="ifrmid" value ="ifrmid" name="ifrmname" id="ifrmid" style="width: 448px;height: 850px;"></iframe>
+            <el-button type="success" icon="el-icon-check" circle @click="iReload"></el-button>
+        </el-dialog>
         </div>
-  
+    
         
     </el-main>
   </el-container>
@@ -50,6 +65,8 @@ export default {
         return {
             torderlist:  [],
             fontname:"",
+            showip: "",
+            dialogVisible: false,
         }
     },
     mounted:function () {
@@ -69,6 +86,17 @@ export default {
                 }).catch( () => {
                     this.$message.error("数据请求失败");
                 });
+        },
+        ActShow(ip){
+            this.showip = "http://"+ip+":7912/remote";
+            
+            this.dialogVisible = true;
+        },
+        iReload(){
+            console.log(this.$refs);
+            console.log(this.$refs.ifrmid.src.substring(0,20));
+            // this.showip = this.$refs.ifrmid.src.split(":")+"?time=12328"
+
         },
         TIFSearch(){
             let par = {"pagesize":1000,"name":this.fontname};

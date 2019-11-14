@@ -98,12 +98,12 @@
     </el-row> -->
     <TIFOrder></TIFOrder>
     <Order></Order>
-    <float-icons padding="10 10 60 10" class="icons-warp">
+    <!-- <float-icons padding="10 10 60 10" class="icons-warp">
     <div class="float-icon-item">
     <img src="../img/phone.png" alt="" @click="handleIcons('home')">
     <span>查看</span>
     </div>
-    </float-icons>
+    </float-icons> -->
   </div>
 
 
