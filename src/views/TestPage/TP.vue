@@ -1,5 +1,26 @@
 <template>
   <div>
+    <table>
+      <tbody>
+        <tr>
+          <th style="width: 45%;">JSON</th>
+          <th style="width: 10%; font-size: 22px;">→</th>
+          <th style="width: 45%;">Go <label><input type="checkbox" id="inline" checked="">Inline type definitions</label></th>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <tbody>
+        <tr>
+          <td style="width: 50%;">
+              <div id="input" contenteditable=""></div>
+          </td>
+          <td style="width: 50%;">
+            <div id="output"><span style="color: #777;">Go will appear here</span></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
   </div>
 </template>
