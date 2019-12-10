@@ -49,6 +49,7 @@
               <div>
               <el-radio v-model="apps" label="oppo" style="margin-top:10%">oppo</el-radio>
               <el-radio v-model="apps" label="huawei" style="margin-top:10%">华为</el-radio>
+              <el-radio v-model="apps" label="vivo" style="margin-top:10%">华为</el-radio>
               <div>
                 <a :href="url" v-if="url != ''">查看实时页面</a>
               </div>
@@ -126,7 +127,7 @@ export default {
             url: "",
             ip: "",
             res: "",
-            logip:"192.168.248.158",
+            logip:"192.168.248.179",
             apps: 'oppo',
             centerDialogVisible: false,
             loading: false,

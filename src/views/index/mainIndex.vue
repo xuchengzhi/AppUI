@@ -96,6 +96,7 @@
         <maintable id="maintable"></maintable>
       </el-col>
     </el-row> -->
+    <Tp></Tp>
     <TIFOrder></TIFOrder>
     <Order></Order>
     <!-- <float-icons padding="10 10 60 10" class="icons-warp">
@@ -117,6 +118,7 @@ import Order from '../AutoPay/Order';
 import LineEcharts from '../../components/ECharts/lineEcharts'
 import Maintable from '../table/maintable'
 import AutoPay from '../AutoPay/index'
+import Tp from '../TestPage/TP'
 import Maps from '../map/Map'
 import axios from 'axios';
 import { device,act_run,orders,devupdate,atx,adb } from '../../api/autopay';
@@ -127,7 +129,7 @@ export default {
     }
   },
   name: 'mainIndex',
-  components: {Maintable, LineEcharts,AutoPay,Maps,TIFOrder,Order,'float-icons': FloatIcons,},
+  components: {Maintable,Tp, LineEcharts,AutoPay,Maps,TIFOrder,Order,'float-icons': FloatIcons,},
   mounted () {
     this.selfAdaption()
   },

@@ -1,5 +1,16 @@
 <template>
   <div>
+    <header>
+        <div class="intro">
+            <div class="title">
+                <h1>JSON-to-Go</h1>
+                <h2>Convert JSON to Go struct</h2>
+            </div>
+            <div>
+                <img src="../img/json-to-go.png" id="brand">
+            </div>
+        </div>
+    </header>
     <table>
       <tbody>
         <tr>
@@ -26,6 +37,13 @@
 </template>
 
 <script>
+
+import '../../js/analytics.js';
+import '../../js/jquery.min.js';
+import '../../js/highlight.min.js';
+import '../../js/json-to-go.js';
+import '../../js/common.js';
+import '../../js/gofmt.js';
 export default {
 
   data() {
@@ -46,7 +64,9 @@ export default {
   }
 }
 </script>
-<style lang='scss' scoped>
+<style scoped>
+@import "../../css/tomorrow.highlight.css";
+@import "../../css/common.css";
 h1 {
   background: red;
   width: 375px;
