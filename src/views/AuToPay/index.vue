@@ -17,7 +17,8 @@
             <el-col :span="10" v-for="(item,index) in dev" >
               
               <el-card style="margin-right:5px">
-                <img :src="item.img" class="image">
+                <!-- <img :src="item.img" class="image"> -->
+                <p>{{item.ip}}</p>
               </el-card>
               <div style="padding: 2px;">
                   <div>
@@ -89,7 +90,7 @@
       </el-col>
       <el-col :span="8">
         <p class="title">日志</p>
-        <!-- <input type="text" name="logip"> -->
+        
         <ul>
 
         <div class="card kjfs" style="margin-right:2px;background-color: rgba(233, 238, 243, 0.23);height: 480px;">
@@ -153,7 +154,7 @@ export default {
     },
     created(){
            //页面刚进入时开启长连接
-            this.initWebSocket()
+            // this.initWebSocket()
     },
 　　destroyed: function() {
 　　　　//页面销毁时关闭长连接
@@ -203,7 +204,7 @@ export default {
         GetDevice() {
             device().then(res => {
               let { code, msg, data } = res;
-             
+              console.log(data);
             
               if (code == 200){
                   if (data != undefined && data.length == 0) {
