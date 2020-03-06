@@ -2,7 +2,7 @@
   <el-container>
     <el-main>
         <div style="text-align:center"><H1>试用字体安装列表</H1></div>
-        <el-button  @click="TIF">刷新试用字体记录</el-button>
+        <el-button  @click="TIF" v-loading.fullscreen.lock="fullscreenLoading">刷新试用字体记录</el-button>
         <div>
         <template slot="header" slot-scope="scope">
             <el-input
@@ -65,6 +65,7 @@ export default {
         return {
             torderlist:  [],
             fontname:"",
+            fullscreenLoading:false,
             showip: "",
             dialogVisible: false,
         }
@@ -74,6 +75,7 @@ export default {
     },
     methods: {
         TIF(){
+            this.fullscreenLoading = true
             let par = {"pagesize":1000,"name":this.fontname};
             TIFlist(par).then(res => {
                 let { code, msg, data } = res;
@@ -86,6 +88,7 @@ export default {
                 }).catch( () => {
                     this.$message.error("数据请求失败");
                 });
+                this.fullscreenLoading = false
         },
         ActShow(ip){
             this.showip = "http://"+ip+":7912/remote";

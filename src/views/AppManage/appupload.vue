@@ -14,7 +14,7 @@
               :auto-upload="false"
               ref="upload"
               drag
-              action="http://localhost/v1/app/fileup"
+              action="/v1/app/fileup"
               :before-upload = "beforeAvatarUpload"
               multiple>
               <i class="el-icon-upload"></i>
@@ -138,7 +138,8 @@ export default {
     this.dialogVisible = true;
   },
   apps() {
-    requestApplist().then(res => {
+    let par = {"type":"android"} 
+    requestApplist(par).then(res => {
           let { msg, code, data } = res;
           this.applist = data.List;
         }).catch( () => {

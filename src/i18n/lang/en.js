@@ -32,6 +32,7 @@ const en = {
     editor: 'editor',
     markdown: 'markdown',
     wangeditor: 'wangeditor',
+    cloudFont: 'cloudFont',
     multiDirectory: 'multiDirectory',
     'menu2-1': 'menu2-1',
     'menu2-2': 'menu2-2',

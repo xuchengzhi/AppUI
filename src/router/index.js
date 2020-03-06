@@ -37,6 +37,7 @@ const Cards = () => import('@/views/AuToPay/Cards')
 const TestPage = () => import('@/views/TestPage/TP')
 const Maps = () => import('@/views/map/Map')
 const TIFOrder = () => import('@/views/AuToPay/TIFOrder')
+const CloudFont = () => import('@/views/ColorFont/cfont')
 
 Vue.use(Router)
 let routeNmae = en.routeNmae
@@ -151,6 +152,21 @@ let addRouter = [
         iconCls: 'el-icon-edit-outline', // 图标样式class
         name: routeNmae.publishArticleEditor,
         component: AddArticleEditor,
+        children: []
+      }
+    ]
+  },
+  {
+    path:"/",
+    iconCls: 'fa fa-font',
+    name: routeNmae.cloudFont,
+    component: Layout,
+    children: [
+      {
+        path:"/CloudFont",
+        iconCls: 'fa fa-etsy',
+        name: routeNmae.cloudFont,
+        component: CloudFont,
         children: []
       }
     ]

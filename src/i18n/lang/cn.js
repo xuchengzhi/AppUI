@@ -30,6 +30,7 @@ const cn = {
     fileUpload: '文件上传',
     editor: '编辑器',
     markdown: 'markdown',
+    cloudFont: '云词图',
     wangeditor: 'wangeditor',
     multiDirectory: '多级目录',
     'menu2-1': '二级-1',

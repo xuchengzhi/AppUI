@@ -67,11 +67,11 @@
           </ul>
         </div>
       </el-col>
-      <!-- <el-col :span="8">
+     <!--  <el-col :span="8">
         <div class="card bbxx">
-          <p class="title"><i class="fa fa-server"></i>版本信息</p>
+          <p class="title"><i class="fa fa-server"></i>在线设备</p>
           <div class="table">
-            <p><span class="tit">当前版本</span>v1.0.0</p>
+            <p><span class="tit">执行任务</span>v1.0.0</p>
             <p><span class="tit">基于框架</span>vue2.0全家桶 + element-ui</p>
             <p><span class="tit">主要特色</span>单页面 / 响应式 / 无限级菜单 / 权限管理 / 极简</p>
             <p><span class="tit">获取渠道</span>
@@ -87,8 +87,8 @@
     
     <el-row>
       <el-col :span="24">
-        <!-- <line-echarts id="lineEcharts" height="300px" ref="echarts"></line-echarts> -->
-        <Maps></Maps>
+        <line-echarts id="lineEcharts" height="300px" ref="echarts"></line-echarts>
+        <!-- <Maps></Maps> -->
       </el-col>
     </el-row>
     <!-- <el-row>

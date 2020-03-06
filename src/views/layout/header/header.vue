@@ -3,6 +3,7 @@
     <el-header id="header">
       <span class="hideAside" @click="collapse"><i class="fa fa-indent fa-lg"></i></span>
       <ul class="personal">
+        <!-- <li><a href="/swagger" target="_blank">接口swagger</a></li> -->
         <li>{{shijian}}</li>
         <li class="fullScreen" @click="fullScreen">
           <el-tooltip class="item" effect="dark" content="全屏" placement="bottom"><i
