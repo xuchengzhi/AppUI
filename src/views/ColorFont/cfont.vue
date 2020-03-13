@@ -6,7 +6,7 @@
         </el-step>
         <el-step title="选择背景图" icon="el-icon-picture"></el-step>
 
-        <el-step title="选择ttf" icon="el-icon-upload"></el-step>
+        <el-step title="选择ttf" icon="fa fa-font"></el-step>
       </el-steps>
 
       <div width="200px" class="div1">

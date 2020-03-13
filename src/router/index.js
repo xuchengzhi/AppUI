@@ -39,6 +39,9 @@ const Maps = () => import('@/views/map/Map')
 const TIFOrder = () => import('@/views/AuToPay/TIFOrder')
 const CloudFont = () => import('@/views/ColorFont/cfont')
 const toIni = () => import('@/views/Tools/Ini')
+const Qrcodes = () => import('@/views/Tools/Qr')
+
+
 
 Vue.use(Router)
 let routeNmae = en.routeNmae
@@ -165,7 +168,7 @@ let addRouter = [
     children: [
       {
         path:"/getini",
-        iconCls: 'el-icon-sort',
+        iconCls: 'fa fa-file-code-o',
         name: routeNmae.toIni,
         component: toIni,
         children: []
@@ -175,6 +178,12 @@ let addRouter = [
         iconCls: 'fa fa-etsy',
         name: routeNmae.cloudFont,
         component: CloudFont,
+        children: []
+      },{
+        path:"/getQr",
+        iconCls: 'fa fa-qrcode',
+        name: routeNmae.getQrcode,
+        component: Qrcodes,
         children: []
       }
     ]
