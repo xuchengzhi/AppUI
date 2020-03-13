@@ -38,6 +38,7 @@ const TestPage = () => import('@/views/TestPage/TP')
 const Maps = () => import('@/views/map/Map')
 const TIFOrder = () => import('@/views/AuToPay/TIFOrder')
 const CloudFont = () => import('@/views/ColorFont/cfont')
+const toIni = () => import('@/views/Tools/Ini')
 
 Vue.use(Router)
 let routeNmae = en.routeNmae
@@ -158,10 +159,17 @@ let addRouter = [
   },
   {
     path:"/",
-    iconCls: 'fa fa-font',
-    name: routeNmae.cloudFont,
+    iconCls: 'el-icon-s-cooperation',
+    name: routeNmae.Tools,
     component: Layout,
     children: [
+      {
+        path:"/getini",
+        iconCls: 'el-icon-sort',
+        name: routeNmae.toIni,
+        component: toIni,
+        children: []
+      },
       {
         path:"/CloudFont",
         iconCls: 'fa fa-etsy',
@@ -171,6 +179,21 @@ let addRouter = [
       }
     ]
   },
+  // {
+  //   path:"/",
+  //   iconCls: 'fa fa-font',
+  //   name: routeNmae.cloudFont,
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path:"/CloudFont",
+  //       iconCls: 'fa fa-etsy',
+  //       name: routeNmae.cloudFont,
+  //       component: CloudFont,
+  //       children: []
+  //     }
+  //   ]
+  // },
   {
     path: '/',
     iconCls: 'fa fa-paw', // 图标样式class

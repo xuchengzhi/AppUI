@@ -31,6 +31,8 @@ const en = {
     fileUpload: 'fileUpload',
     editor: 'editor',
     markdown: 'markdown',
+    Tools:'Tools',
+    toIni:'HtmlToIni',
     wangeditor: 'wangeditor',
     cloudFont: 'cloudFont',
     multiDirectory: 'multiDirectory',

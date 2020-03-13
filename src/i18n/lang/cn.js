@@ -28,6 +28,8 @@ const cn = {
     dragSort: '拖拽排序',
     upload: '上传',
     fileUpload: '文件上传',
+    toIni:'Html转Ini',
+    Tools:'工具',
     editor: '编辑器',
     markdown: 'markdown',
     cloudFont: '云词图',

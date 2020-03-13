@@ -31,5 +31,5 @@ export const TIFlist = params => { return axios.post('v1/autopay/TIFList',params
 
 export const TIFSearch = params => { return axios.post('v1/autopay/TIFSearch',params).then(res => res.data) }
 
-
+export const BuildCFont = params => { return axios.post('v1/photo/BuildCFont',params).then(res => res.data) }
 
