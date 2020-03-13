@@ -33,3 +33,4 @@ export const TIFSearch = params => { return axios.post('v1/autopay/TIFSearch',pa
 
 export const BuildCFont = params => { return axios.post('v1/photo/BuildCFont',params).then(res => res.data) }
 
+export const GetQrcode = params => { return axios.post('/v1/qr/GetQr',params).then(res => res.data) }

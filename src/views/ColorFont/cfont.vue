@@ -57,7 +57,12 @@
       </div>
       <div class="thumb-img-list">
         <el-card :body-style="{ padding: '0px' }" v-show = "img_show">
-          <img class="preview-img " :src="newimg" sizes="100,200">
+          <!-- <img class="preview-img " :src="newimg" sizes="100,200"> -->
+          <el-image
+            style="width: 100px; height: 100px"
+            :src="newimg"
+            fit="fill">
+          </el-image>
         </el-card>
       </div>
     </div>

@@ -1,17 +1,38 @@
 <template>
   <div width="200px" class="div1">
-    <el-upload
-      class="upload-demo"
-      drag
-      accept = ".html,.HTML"
-      action="/v1/transfer/HtmlToIni"
-      :on-success = "uploadSuccess"
-      multiple>
-      <i class="el-icon-upload"></i>
-      <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-      <div class="el-upload__tip" slot="tip">只能上传HTML文件</div>
-    </el-upload>
-    <a class='download' :href='htmls' download=""  title="下载" v-show="inishow" style="margin-top: 10px">下载INI</a>
+    <el-form ref="form" :model="form" label-width="100px">
+      <el-form-item label="二维码内容">
+        <el-input v-model = "form.msg" :width = "100" ></el-input>
+      </el-form-item>
+      <el-form-item label="二维码前景色">
+        <el-color-picker v-model="form.color"></el-color-picker>
+      </el-form-item>
+      <el-form-item label="二维码背景色">
+        <el-color-picker v-model="form.bcolor"></el-color-picker>
+      </el-form-item>
+      <el-form-item label="二维码名称">
+      <el-input v-model = "form.name"></el-input>
+      </el-form-item>
+      <el-form-item label="二维码大小">
+        <el-slider v-model="form.x" :min = "100" :max = "1000"></el-slider>
+      </el-form-item>
+    </el-form>
+    <el-button @click="buildQr" >生成二维码</el-button>
+    <el-dialog
+      title="二维码预览"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose">
+      <el-image
+        style="width: 200px; height: 200px"
+        :src="qrimg"
+        fit="fill">
+      </el-image>
+      <div></div>
+      <a class='download' :href='qrimg' download=""  title="下载二维码" style="margin-top: 10px">保存二维码</a>
+    </el-dialog>
+    
+    
   </div>
       
 
@@ -19,25 +40,40 @@
 
 <script>
 import axios from 'axios'; 
+import {GetQrcode} from '../../api/autopay'; 
 export default {
     name: 'getQr',
     data() {
         return {
-          htmls: "", // 将要上传的formdata数据
-          inishow:false
+          form : {
+            msg:"",
+            color: "",
+            bcolor: "",
+            x: 0,
+            y: 0,
+            name: ""
+          },
+          inishow:false,
+          dialogVisible: false,
+          qrimg:""
         }
     },
     methods: {
       
-      saveFile: function () {
-        // window.location.href = this.htmls;
-        window.open(this.htmls);
-        // this.saveFile(htmls);
-      
-      },
-      uploadSuccess: function (f) {
-        this.htmls = f.data;
-        this.inishow = true;
+      buildQr: function (f) {
+        this.form.y = this.form.x
+        console.log(this.form);
+        
+        GetQrcode(this.form).then(res => {
+          let { code, msg, data } = res;
+          console.log(data);
+          if (code == 200) {
+            this.qrimg = data;
+            this.dialogVisible = true;
+          }
+        }).catch(() => {
+          this.$message.error("数据请求失败");
+        });
 
       }
 
@@ -50,6 +86,9 @@ export default {
 
 <style type="text/css">
   .div1{
+    width: 600px;
+    height: 500px;
+    padding: 10px;
     text-align: center;
     margin-top: 2%;
     margin-bottom: 10%;
