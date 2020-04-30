@@ -18,7 +18,7 @@
     "element-ui": "^2.10.1",
     "font-awesome": "^4.7.0",
     "iview": "^3.4.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "js-cookie": "^2.2.0",
     "js-md5": "^0.7.3",
     "node-sass": "^4.12.0",
